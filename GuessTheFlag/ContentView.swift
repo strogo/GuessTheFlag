@@ -8,6 +8,21 @@
 import SwiftUI
 import AVFoundation
 
+struct FlagView: View {
+    var image: String
+    
+    var body: some View {
+        Image(image)
+            .renderingMode(.original)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 150)
+            .clipShape(RoundedRectangle(cornerRadius: 5))
+            .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.white, lineWidth: 1))
+            .shadow(color: Color.white.opacity(0.7), radius: 6, x: 2, y: 3)
+    }
+}
+
 struct ContentView: View {
     @State private var showingScore = false
     @State private var gameOver = false
@@ -44,14 +59,7 @@ struct ContentView: View {
                     Button {
                         flagTapped(number)
                     } label: {
-                        Image(countries[number])
-                            .renderingMode(.original)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 150)
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                            .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.white, lineWidth: 1))
-                            .shadow(color: Color.white.opacity(0.7), radius: 6, x: 2, y: 3)
+                        FlagView(image: countries[number])
                     }
                 }
                 
