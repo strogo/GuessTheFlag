@@ -11,6 +11,7 @@ import AVFoundation
 struct FlagView: View {
     var image: String
     
+    // Flag view
     var body: some View {
         Image(image)
             .renderingMode(.original)
